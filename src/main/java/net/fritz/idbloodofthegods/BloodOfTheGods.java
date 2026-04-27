@@ -2,6 +2,8 @@ package net.fritz.idbloodofthegods;
 
 import net.fritz.idbloodofthegods.registry.ModBlockEntities;
 import net.fritz.idbloodofthegods.registry.ModBlocks;
+import net.fritz.idbloodofthegods.registry.ModCreativeTabs;
+import net.fritz.idbloodofthegods.registry.ModItems;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
@@ -19,6 +21,8 @@ public class BloodOfTheGods {
     public BloodOfTheGods(IEventBus modEventBus, ModContainer modContainer) {
         ModBlocks.BLOCKS.register(modEventBus);
         ModBlocks.ITEMS.register(modEventBus);
+        ModItems.ITEMS.register(modEventBus);
+        ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
 
     

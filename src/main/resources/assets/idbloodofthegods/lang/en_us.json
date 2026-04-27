@@ -1,3 +1,5 @@
 {
-  "block.idbloodofthegods.blood_bench": "Blood Bench"
+  "block.idbloodofthegods.blood_bench": "Blood Bench",
+  "item.idbloodofthegods.blood": "Blood",
+  "itemGroup.idbloodofthegods": "Blood of the Gods"
 }
