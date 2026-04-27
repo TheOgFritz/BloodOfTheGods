@@ -1,7 +1,7 @@
 {
   "variants": {
-    "": {
-      "model": "idbloodofthegods:block/blood_bench"
-    }
+    "blood=0": { "model": "idbloodofthegods:block/blood_bench" },
+    "blood=1": { "model": "idbloodofthegods:block/blood_bench" },
+    "blood=2": { "model": "idbloodofthegods:block/blood_bench" }
   }
 }

@@ -1,7 +1,5 @@
 {
-  "loader": "neoforge:obj",
-  "parent": "block/block",
   "textures": {
-    "all": "idbloodofthegods:block/blood_bench"
+    "particle": "idbloodofthegods:block/blood_bench"
   }
 }
