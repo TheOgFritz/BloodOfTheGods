@@ -43,15 +43,15 @@ public class ClientEvents {
             if (!tag.getBoolean("blood_infused")) continue;
 
             // Stagger particles across players so they don't all spawn the same tick
-            if ((level.getGameTime() + player.getId()) % 10 != 0) continue;
+            if ((level.getGameTime() + player.getId()) % 20 != 0) continue;
 
             RandomSource rng = level.getRandom();
             double yawRad = Math.toRadians(player.getYRot());
 
-            // Offset to the player's right-hand side
-            double x = player.getX() + Math.cos(yawRad) * 0.4 + (rng.nextDouble() - 0.5) * 0.2;
-            double y = player.getY() + 0.9 + (rng.nextDouble() - 0.5) * 0.2;
-            double z = player.getZ() + Math.sin(yawRad) * 0.4 + (rng.nextDouble() - 0.5) * 0.2;
+            // Offset to left-hand side and forward to appear near sword tip
+            double x = player.getX() - Math.cos(yawRad) * 0.4 - Math.sin(yawRad) * 0.4 + (rng.nextDouble() - 0.5) * 0.2;
+            double y = player.getY() + 1.0 + (rng.nextDouble() - 0.5) * 0.2;
+            double z = player.getZ() - Math.sin(yawRad) * 0.4 + Math.cos(yawRad) * 0.4 + (rng.nextDouble() - 0.5) * 0.2;
 
             level.addParticle(
                     new DustParticleOptions(new Vector3f(0.55f, 0.0f, 0.0f), 1.2f),
