@@ -1,5 +1,21 @@
 {
   "block.idbloodofthegods.blood_bench": "Blood Bench",
   "item.idbloodofthegods.blood": "Blood",
-  "itemGroup.idbloodofthegods": "Blood of the Gods"
+  "item.idbloodofthegods.deimos_spawn_egg": "Deimos Spawn Egg",
+  "itemGroup.idbloodofthegods": "Blood of the Gods",
+
+  "entity.idbloodofthegods.deimos": "Deimos, Herald of Dread",
+
+  "advancement.idbloodofthegods.blood_bench.title": "A Bloody Workbench",
+  "advancement.idbloodofthegods.blood_bench.description": "Craft a Blood Bench",
+  "advancement.idbloodofthegods.fill_blood_bench.title": "Blood Offering",
+  "advancement.idbloodofthegods.fill_blood_bench.description": "Fill a Blood Bench with Blood",
+  "advancement.idbloodofthegods.imbue_sword.title": "Weapon of the Gods",
+  "advancement.idbloodofthegods.imbue_sword.description": "Imbue a sword with blood from a Blood Bench",
+
+  "tooltip.idbloodofthegods.blood_imbued": "Blood Imbued",
+
+  "effect.idbloodofthegods.bleeding": "Bleeding",
+
+  "death.attack.bleeding": "%1$s bled out"
 }

@@ -2,7 +2,9 @@ package net.fritz.idbloodofthegods.block;
 
 import com.mojang.serialization.MapCodec;
 import net.fritz.idbloodofthegods.registry.ModBlockEntities;
+import net.fritz.idbloodofthegods.registry.ModCriteriaTriggers;
 import net.fritz.idbloodofthegods.registry.ModItems;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -100,6 +102,9 @@ public class BloodBench extends BaseEntityBlock {
                     }
                     stack.shrink(1);
                     bloodBench.startFill();
+                    if (player instanceof ServerPlayer serverPlayer) {
+                        ModCriteriaTriggers.FILL_BLOOD_BENCH.trigger(serverPlayer);
+                    }
                 }
             }
             return ItemInteractionResult.SUCCESS;
@@ -128,6 +133,9 @@ public class BloodBench extends BaseEntityBlock {
                 stack.set(ATTRIBUTE_MODIFIERS, builder.build());
 
                 level.setBlock(pos, state.setValue(BLOOD, state.getValue(BLOOD) - 1), 3);
+                    if (player instanceof ServerPlayer serverPlayer) {
+                        ModCriteriaTriggers.IMBUE_SWORD.trigger(serverPlayer);
+                    }
             }
             return ItemInteractionResult.SUCCESS;
         }

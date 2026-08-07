@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "id": "minecraft:iron_sword"
+    },
+    "title": {
+      "translate": "advancement.idbloodofthegods.imbue_sword.title"
+    },
+    "description": {
+      "translate": "advancement.idbloodofthegods.imbue_sword.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "idbloodofthegods:fill_blood_bench",
+  "criteria": {
+    "imbue_sword": {
+      "trigger": "idbloodofthegods:imbue_sword"
+    }
+  }
+}

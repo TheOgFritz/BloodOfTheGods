@@ -1,7 +1,9 @@
 package net.fritz.idbloodofthegods.events;
 
 import net.fritz.idbloodofthegods.block.BloodBenchRenderer;
+import net.fritz.idbloodofthegods.entity.DeimosRenderer;
 import net.fritz.idbloodofthegods.registry.ModBlockEntities;
+import net.fritz.idbloodofthegods.registry.ModEntityTypes;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.tags.ItemTags;
@@ -13,7 +15,11 @@ import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterClientReloadListenersEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import org.joml.Vector3f;
 
@@ -23,11 +29,26 @@ import static net.minecraft.core.component.DataComponents.CUSTOM_DATA;
 public class ClientEvents {
 
     @SubscribeEvent
+    public static void onRegisterReloadListeners(RegisterClientReloadListenersEvent event) {
+        // handled by texture metadata
+    }
+
+    @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(
                 ModBlockEntities.BLOOD_BENCH_BLOCK_ENTITY.get(),
                 ctx -> new BloodBenchRenderer()
         );
+        event.registerEntityRenderer(ModEntityTypes.DEIMOS.get(), DeimosRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void onItemTooltip(ItemTooltipEvent event) {
+        ItemStack stack = event.getItemStack();
+        if (!stack.is(ItemTags.SWORDS)) return;
+        CompoundTag tag = stack.getOrDefault(CUSTOM_DATA, CustomData.EMPTY).copyTag();
+        if (!tag.getBoolean("blood_infused")) return;
+        event.getToolTip().add(Component.translatable("tooltip.idbloodofthegods.blood_imbued").withStyle(ChatFormatting.DARK_RED));
     }
 
     @SubscribeEvent
